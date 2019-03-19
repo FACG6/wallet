@@ -1,0 +1,42 @@
+{
+  "name": "wallet",
+  "version": "1.0.0",
+  "description": "1- Lots of people in the UAE struggle to manage their finance easily.     2- 90% of family problems is related to budget mismanagement , according to study conducted in the UAE.     3- People, including families, businessmen and employees forget how and where they spent their money. They also struggle to track all their transactions in an easy way.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FACG6/wallet.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FACG6/wallet/issues"
+  },
+  "homepage": "https://github.com/FACG6/wallet#readme",
+  "devDependencies": {
+    "eslint": "^5.15.3",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "supertest": "^4.0.2",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.10.1"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0",
+    "pg": "^7.9.0",
+    "sweetalert2": "^8.5.0",
+    "validator": "^10.11.0"
+  }
+}
