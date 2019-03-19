@@ -6,7 +6,7 @@ let dbUrl = process.env.DB_LOCAL_URL;
 if (process.env.NODE_ENV === 'pro') {
   dbUrl = process.env.DB_HEROKU_URL;
 }
-if (process.env.NODE_ENV === 'test') {
+else if (process.env.NODE_ENV === 'test') {
   dbUrl = process.env.DB_TESTING_URL;
 }
 else {
