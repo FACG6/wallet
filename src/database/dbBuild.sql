@@ -46,6 +46,6 @@ BEGIN;
   INSERT INTO categories
     (name)
   VALUES
-    ('clothes', 'food', 'fuel', 'education', 'health', 'gifts', 'parties');
+    ('Clothes'), ('Bills'), ('Food'), ('Fuel'), ('Education'), ('Health'), ('Gifts'), ('Parties'), ('Drinks'), ('Transports');
 
   COMMIT;
