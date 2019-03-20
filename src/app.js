@@ -5,7 +5,7 @@ const path = require('path');
 const serveFavicon = require('serve-favicon');
 const cookieParser = require('cookie-parser');
 
-// const controllers = require('./controllers/index');
+const controllers = require('./controllers/index');
 
 const app = express();
 
@@ -23,5 +23,5 @@ app.engine('hbs', expresshbs({
   partialsDir: path.join(__dirname, 'views', 'partials'),
   defaultLayout: 'main',
 }));
-// app.use(controllers);
+app.use(controllers);
 module.exports = app;
