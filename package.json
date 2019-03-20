@@ -7,8 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "tape test/testQueries.js | tap-spec",
-    "start": "node ./src/index.js"
+    "test": "NODE_ENV=test tape test/testQueries.js | tap-spec",
+    "dev": "NODE_ENV=dev node src/index.js",
+    "start": "NODE_ENV=pro node src/index.js"
   },
   "repository": {
     "type": "git",
