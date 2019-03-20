@@ -4,14 +4,12 @@ const url = require('url');
 let dbUrl = process.env.DB_LOCAL_URL;
 if (process.env.NODE_ENV === 'pro') {
   dbUrl = process.env.DB_HEROKU_URL;
-}
-else if (process.env.NODE_ENV === 'test') {
+} else if (process.env.NODE_ENV === 'test') {
   dbUrl = process.env.DB_TESTING_URL;
 }
-else {
-  dbUrl = process.env.DB_LOCAL_URL;
+if (!dbUrl) {
+  throw new Error('No Database URL Available');
 }
-
 const urlParams = url.parse(dbUrl);
 const [username, password] = urlParams.auth.split(':');
 

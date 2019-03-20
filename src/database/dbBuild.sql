@@ -1,8 +1,8 @@
 BEGIN;
 
-  DROP TABLE IF EXISTS users, categories, plans, category_plan, expenses;
+  DROP TABLE IF EXISTS "user", category, "plan", category_plan, expense;
 
-  CREATE TABLE users
+  CREATE TABLE "user"
   (
     id SERIAL PRIMARY KEY,
     username TEXT NOT NULL,
@@ -10,16 +10,16 @@ BEGIN;
     email TEXT NOT NULL UNIQUE
   );
 
-  CREATE TABLE plans
+  CREATE TABLE "plan"
   (
     id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES users(id),
+    user_id INTEGER REFERENCES "user"(id),
     income FLOAT NOT NULL,
     starting TEXT NOT NULL,
     ending TEXT NOT NULL
   );
 
-  CREATE TABLE categories
+  CREATE TABLE category
   (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL
@@ -28,33 +28,20 @@ BEGIN;
   CREATE TABLE category_plan
   (
     id SERIAL PRIMARY KEY,
-    plan_id INTEGER REFERENCES plans(id),
-    cat_id INTEGER REFERENCES categories(id),
+    plan_id INTEGER REFERENCES "plan"(id),
+    cat_id INTEGER REFERENCES category(id),
     amount FLOAT NOT NULL
   );
 
-  CREATE TABLE expenses
+  CREATE TABLE expense
   (
     id SERIAL PRIMARY KEY,
-    plan_id INTEGER REFERENCES plans(id),
-    cat_id INTEGER REFERENCES categories(id),
+    plan_id INTEGER REFERENCES "plan"(id),
+    cat_id INTEGER REFERENCES category(id),
     price FLOAT NOT NULL,
     date TEXT NOT NULL,
     description TEXT
   );
 
-  INSERT INTO categories
-    (name)
-  VALUES
-    ('Clothes'), 
-    ('Bills'), 
-    ('Food'), 
-    ('Fuel'), 
-    ('Education'), 
-    ('Health'), 
-    ('Gifts'), 
-    ('Parties'), 
-    ('Drinks'), 
-    ('Transports');
-
   COMMIT;
+  
