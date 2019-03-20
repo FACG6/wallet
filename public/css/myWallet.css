@@ -17,6 +17,19 @@
   appearance: none;
 }
 
+.profile__total-notify {
+  float: right;
+  margin-right: 12%;
+  margin-top: 10px;
+  width: 233px;
+  padding: 15px;
+  background: #d9681f;
+  color: #eee;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 25px;
+}
+
 .profile__total-progress,
 .profile__expenses-progress::-webkit-progress-bar {
   background: #c4c4c4;
