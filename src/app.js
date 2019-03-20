@@ -5,7 +5,7 @@ const path = require('path');
 const serveFavicon = require('serve-favicon');
 const cookieParser = require('cookie-parser');
 
-//const controllers = require('./controllers/index');
+// const controllers = require('./controllers/index');
 
 const app = express();
 
