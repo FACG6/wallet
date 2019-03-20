@@ -23,5 +23,7 @@ app.engine('hbs', expresshbs({
   partialsDir: path.join(__dirname, 'views', 'partials'),
   defaultLayout: 'main',
 }));
+
 app.use(controllers);
+
 module.exports = app;
