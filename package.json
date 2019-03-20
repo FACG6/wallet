@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "NODE_ENV=test tape test/testQueries.js | tap-spec",
-    "dev": "NODE_ENV=dev node src/index.js",
+    "dev": "NODE_ENV=dev nodemon src/index.js",
     "start": "NODE_ENV=pro node src/index.js"
   },
   "repository": {
@@ -25,6 +25,7 @@
     "eslint": "^5.15.3",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
+    "nodemon": "^1.18.10",
     "supertest": "^4.0.2",
     "tap-spec": "^5.0.0",
     "tape": "^4.10.1"
