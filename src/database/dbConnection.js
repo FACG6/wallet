@@ -1,11 +1,13 @@
 const { Pool } = require('pg');
 const url = require('url');
 
-let dbUrl = process.env.DB_LOCAL_URL;
+let dbUrl = '';
 if (process.env.NODE_ENV === 'pro') {
   dbUrl = process.env.DB_HEROKU_URL;
 } else if (process.env.NODE_ENV === 'test') {
   dbUrl = process.env.DB_TESTING_URL;
+} else {
+  dbUrl = process.env.DB_LOCAL_URL;
 }
 if (!dbUrl) {
   throw new Error('No Database URL Available');
