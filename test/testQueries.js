@@ -12,9 +12,6 @@ tape('test select plan', (test) => {
     })
     .catch((error) => {
       test.error(error);
+      test.end();
     });
-});
-
-tape.onFinish(() => {
-  process.exit(0);
 });

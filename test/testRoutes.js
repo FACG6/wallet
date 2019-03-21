@@ -77,6 +77,3 @@ tape('testing plan route; case2: user has a cookie', (assert) => {
       assert.end();
     });
 });
-tape.onFinish(() => {
-  process.exit(0);
-});
