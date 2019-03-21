@@ -9,6 +9,10 @@
   padding: 20px 10px;
 }
 
+.profile__expenses-add-ico {
+  text-decoration: none;
+}
+
 .profile__total-progress,
 .profile__expenses-progress {
   width: 86%;
@@ -30,15 +34,14 @@
   border-bottom-right-radius: 25px;
 }
 
-.profile__total-progress,
+.profile__total-progress::-webkit-progress-bar,
 .profile__expenses-progress::-webkit-progress-bar {
   background: #c4c4c4;
   border-radius: 7px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
 }
 
-.profile__total-progress,
-.profile__expenses-progress::-webkit-progress-value {
+.green::-webkit-progress-value {
   background: #108a40;
   border-radius: 7px;
 }
@@ -52,12 +55,12 @@
   border-radius: 7px;
 }
 
-.yellow::-webkit-progress-value {
+.orange::-webkit-progress-value {
   background: rgb(255, 102, 0);
   border-radius: 7px;
 }
 
-.yellow::-webkit-progress-bar {
+.orange::-webkit-progress-bar {
   border-radius: 7px;
 }
 

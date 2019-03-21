@@ -42,6 +42,4 @@ BEGIN;
     date TEXT NOT NULL,
     description TEXT
   );
-
-  COMMIT;
-  
+COMMIT;
