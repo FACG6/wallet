@@ -42,4 +42,37 @@ BEGIN;
     date TEXT NOT NULL,
     description TEXT
   );
-COMMIT;
+  INSERT INTO category
+    (name)
+  VALUES
+    ('Clothes'),
+    ('Food'),
+    ('Fuel'),
+    ('Parties'),
+    ('Education'),
+    ('Bills'),
+    ('Gifts'),
+    ('Health'),
+    ('Drinks'),
+    ('transport');
+  INSERT INTO "user"
+    (username, password, email)
+  VALUES
+    ('shorouq', 'shrooq', 'shrooq@hotmail.com');
+  INSERT INTO "plan"
+    (user_id, income, starting, ending)
+  VALUES
+    (1, 5000, '2019-03-01', '2019-03-31');
+  INSERT INTO category_plan
+    (plan_id, cat_id, amount)
+  VALUES
+    (1, 1, 200),
+    (1, 2, 300),
+    (1, 3, 200);
+  INSERT INTO expense
+    (plan_id, cat_id, price, date, description)
+  VALUES
+    (1, 2, 50, '2019-03-2', 'purchase clothes'),
+    (1, 3, 50, '2019-03-2', 'purchase clothes'),
+    (1, 2, 50, '2019-03-2', 'purchase clothes');
+  COMMIT;

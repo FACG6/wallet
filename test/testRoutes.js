@@ -14,6 +14,19 @@ tape('Test pre-tour page', (test) => {
     });
 });
 
+tape('Test My Wallet page', (test) => {
+  supertest(app)
+    .get('/my-wallet')
+    .expect(200)
+    .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTUzMTczNTM4fQ.j3x58-Yw23kHMzR2bqZb1AYxgVFyoss1G-UWeqLcDs0'])
+    .expect('content-type', 'text/html; charset=utf-8')
+    .end((err, response) => {
+      if (err) test.error(err);
+      test.equal(response.text.includes('<title>My Wallet</title>'), true, 'the title of page must be My Wallet');
+      test.end();
+    });
+});
+
 tape('testing home route; case1: user has no cookie', (assert) => {
   supertest(app)
     .get('/')
@@ -38,4 +51,7 @@ tape('testing home route; case2: user has a cookie', (assert) => {
       if (err) assert.error(err);
       assert.end();
     });
+});
+tape.onFinish(() => {
+  process.exit(0);
 });

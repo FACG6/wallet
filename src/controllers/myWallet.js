@@ -1,4 +1,3 @@
-const moment = require('moment');
 const selectPaln = require('../database/queries/selectPlan');
 
 exports.get = (req, res, next) => {
@@ -7,8 +6,8 @@ exports.get = (req, res, next) => {
       const data = result.rows[0];
       const start = result.rows[0].starting;
       const end = result.rows[0].ending;
-      const today = moment();
-      if (today.isBetween(moment(start), moment(end))) {
+      const today = new Date();
+      if (today > new Date(start) && today < new Date(end)) {
         res.render('myWallet', {
           disable: true,
           income: data.income,
