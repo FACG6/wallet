@@ -1,4 +1,4 @@
-exports.checkProtected = (res, req, next) => {
+exports.checkProtected = (req, res, next) => {
   if (req.token) {
     next();
   } else {
@@ -6,7 +6,7 @@ exports.checkProtected = (res, req, next) => {
   }
 };
 
-exports.checkUnProtected = (res, req, next) => {
+exports.checkUnProtected = (req, res, next) => {
   if (req.token) {
     res.redirect('/my-wallet');
   } else {
