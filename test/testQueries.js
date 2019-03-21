@@ -15,3 +15,7 @@ tape('test select plan', (test) => {
       test.end();
     });
 });
+
+tape.onFinish(() => {
+  process.exit(0);
+});
