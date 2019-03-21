@@ -6,7 +6,8 @@ exports.select = (userID) => {
         "plan".starting, 
         "plan".ending, 
         "plan".income, 
-        category.name, 
+        category.name,
+        category.id AS categoryid, 
         category_plan.amount, 
         COALESCE(sum(expense.price),0) As totalExpCat, 
         COALESCE((sum(expense.price)*100/category_plan.amount),0) As percentage, 
@@ -31,7 +32,7 @@ exports.select = (userID) => {
          "plan".user_id = $1 and 
          "plan".id = (SELECT id FROM "plan" ORDER BY id DESC LIMIT 1) 
          GROUP BY
-          "plan".id, "plan".income, category.name, category_plan.amount;`,
+          "plan".id, "plan".income, category.name, category_plan.amount, category.id;`,
     values: [userID],
   };
   return connection.query(query);
