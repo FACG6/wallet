@@ -7,7 +7,7 @@ exports.get = (req, res, next) => {
       const start = result.rows[0].starting;
       const end = result.rows[0].ending;
       const today = new Date();
-      if (today > new Date(start) && today < new Date(end)) {
+      if (today >= new Date(start) && today <= new Date(end)) {
         res.render('myWallet', {
           disable: true,
           income: data.income,
