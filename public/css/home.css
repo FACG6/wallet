@@ -85,6 +85,11 @@
   outline: none;
 }
 
+.hero__btn a {
+  text-decoration: none;
+  color: #eee;
+}
+
 .hero__btn--top {
   margin-left: 71px;
 }
