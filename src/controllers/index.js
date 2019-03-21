@@ -12,6 +12,8 @@ const authentication = require('./middlewares/authentication');
 const {
   checkMyWallet,
 } = require('./middlewares/check');
+const { getPlan } = require('./plan');
+const checkPlan = require('./middlewares/checkPlan');
 
 const router = express.Router();
 
@@ -22,5 +24,8 @@ router.route('/')
   .get(checkUnProtected, home.get);
 router.route('/my-wallet')
   .get(checkMyWallet, getMyWallet.get);
+
+router.route('/my-wallet/plan')
+  .get(check, checkUnProtected, checkPlan, getPlan);
 
 module.exports = router;
