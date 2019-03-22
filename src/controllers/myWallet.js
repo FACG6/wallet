@@ -17,6 +17,7 @@ exports.get = (req, res, next) => {
           categories: result.rows,
           title: 'My Wallet',
           stylesheet: '/css/myWallet.css',
+          script: '/js/myWalletDom.js',
         });
       } else {
         res.render('myWallet', {
