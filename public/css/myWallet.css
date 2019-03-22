@@ -11,6 +11,7 @@
 
 .profile__expenses-add-ico {
   text-decoration: none;
+  cursor: pointer;
 }
 
 .profile__total-progress,
@@ -104,5 +105,44 @@
   border-radius: 50%;
   margin-left: 15px;
 }
+
+/* Start of form add*/
+.form {
+  border: 1px solid #a9a9a963;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: left;
+}
+
+.form input,
+.form textarea {
+  border-radius: 5px;
+  border: none;
+  border-bottom: 3px solid #f16309a1;
+  padding: 5px;
+  margin-left: 15px;
+  outline: none;
+  box-shadow: 0px 3px 10px #4a4a4a96;
+  width: 70%;
+}
+
+.form div {
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.form textarea {
+  width: 90%;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.error {
+  text-align: center;
+  color: red;
+  text-shadow: 3px 3px 5px grey;
+}
+
+/* End of form add */
 
 /*End of main*/
