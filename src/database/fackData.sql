@@ -55,7 +55,6 @@ BEGIN;
     ('Health'),
     ('Drinks'),
     ('transport');
-<<<<<<< HEAD
   INSERT INTO "user"
     (username, password, email)
   VALUES
@@ -76,6 +75,4 @@ BEGIN;
     (1, 2, 50, '2019-03-2', 'purchase clothes'),
     (1, 3, 50, '2019-03-2', 'purchase clothes'),
     (1, 2, 50, '2019-03-2', 'purchase clothes');
-=======
->>>>>>> e616ecdc6cef81b684e766e60d2e3df4f13b12e6
   COMMIT;

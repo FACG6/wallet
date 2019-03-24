@@ -1,12 +1,14 @@
+main {
+  background: rgba(0, 0, 0, 0.75);
+}
 
 .wrapper {
-  padding-bottom: 2rem;
-  background: rgba(0, 0, 0, 0.75);
+  padding: 1.3rem
 }
 
 .heading2 {
   text-align: center;
-  padding:2rem;
+  margin: 1rem 0;
   color: #D96704;
   letter-spacing: .1rem;
   font-size: 1.2rem;
@@ -27,11 +29,17 @@
 
 .form--row p {
   margin-bottom: 1.5rem;
-  padding-left: 1rem;
   font-size: 15px;
   color: #404040;
   font-weight: bold;
   letter-spacing: 1px;
+}
+
+.error {
+  color: red;
+  font-size: 15px;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .form--row {
@@ -86,7 +94,7 @@
   margin-bottom: 1rem;
   margin-top: .5rem;
   width: 50%;
-  text-decoration:none;
+  text-decoration: none;
 }
 
 .button_container {
