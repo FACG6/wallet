@@ -1,0 +1,33 @@
+<div class='container'>
+  <div class='wrapper'>
+    <div class='dots'>
+      <span class="dot dot--left"></span>
+      <span class="dot dot--orange "></span>
+    </div>
+    <h3>Add Your Plan Now!</h2>
+      <p>Select categories and set the budget you want to spend this month:</p>
+      <div class='error' id='error'></div>
+      <div class='plan_form'>
+        <div class='plan_form--column plan_form--column--left'>
+          {{#each categoriesListOne}}
+          <div class='item'>
+            <label for='clothes' class='plan_form--label'>{{name}}</label>
+            <input class='plan_form--checkbox' type="checkbox">
+            <input catId={{id}} value='' class='plan_form--input' disabled='disabled'>
+          </div>
+          {{/each}}
+        </div>
+        <div class='plan_form--column plan_form--column--right'>
+          {{#each categoriesListTwo}}
+          <div class='item'>
+            <label for='parties' class='plan_form--label'>{{name}}</label>
+            <input class='plan_form--checkbox' type="checkbox">
+            <input id={{id}} value='' class='plan_form--input' disabled='disabled'>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+      <div id='addButton' class='btn_container'>
+        <a href='#' class='form--btn'>Add</a>
+      </div>
+  </div>

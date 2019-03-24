@@ -8,12 +8,10 @@ const {
 } = require('./middlewares/check');
 const home = require('../controllers/home');
 const getMyWallet = require('./myWallet');
+const plan = require('./plan');
+const selectCategories = require('./middlewares/selectCategories');
 const authentication = require('./middlewares/authentication');
-const {
-  checkMyWallet,
-} = require('./middlewares/check');
-const { getPlan } = require('./plan');
-const checkPlan = require('./middlewares/checkPlan');
+const { checkMyWallet } = require('./middlewares/check');
 
 const router = express.Router();
 
@@ -25,7 +23,10 @@ router.route('/')
 router.route('/my-wallet')
   .get(checkMyWallet, getMyWallet.get);
 
-router.route('/my-wallet/plan')
-  .get(check, checkUnProtected, checkPlan, getPlan);
+router.route('/my-wallet/plan/add-income')
+  .get(plan.getBudget);
+
+router.route('/my-wallet/plan/add-plan')
+  .get(selectCategories, plan.getPlan);
 
 module.exports = router;

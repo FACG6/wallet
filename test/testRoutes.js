@@ -55,28 +55,54 @@ tape('testing home route; case2: user has a cookie', (assert) => {
 
 tape('testing plan route; case1: user has no cookie', (assert) => {
   supertest(app)
-    .get('/my-wallet/plan')
+    .get('/my-wallet/plan/add-income')
     .expect(200)
     .expect('content-type', /html/)
     .end((err, response) => {
       if (err) assert.error(err);
-      assert.equal(response.text.includes('<title>Wallet || Plan</title>'), true, 'Should incllude title"Wallet || Plan"');
+      assert.equal(response.text.includes('<title>Wallet || Plan</title>'), true, 'Should include title "Wallet || Plan"');
       assert.end();
     });
 });
 
-tape('testing plan route; case2: user has a cookie', (assert) => {
+tape('testing plan route; case3: user has a cookie', (assert) => {
   supertest(app)
-    .get('/my-wallet/plan')
+    .get('/my-wallet/plan/add-income')
+    .set('Cookie', 'jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsInVzZXJuYW1lIjoiaXNyYWEiLCJpYXQiOjE1NTMxODY2NTV9.4vJRACp1K0sALHvcTCH9lidKtdUDLQI3r_B4V4AS_K0')
+    .expect(200)
+    .expect('content-type', /html/)
+    .end((err, response) => {
+      if (err) assert.error(err);
+      assert.equal(response.text.includes('<title>Wallet || Plan</title>'), true, 'Should include title "Wallet || Plan"');
+      assert.end();
+    });
+});
+
+tape('testing plan route; case3: user has a cookie and planId in the token', (assert) => {
+  supertest(app)
+    .get('/my-wallet/plan/add-income')
     .set('Cookie', 'jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInBsYW5JZCI6MiwiaWF0IjoxNTUzMTA0NDU3fQ.y_qqXnk-64bgghpDSHaExVYmkuOoXOeON2XO4XRQPZ0')
+    .expect(200)
+    .expect('content-type', /html/)
+    .end((err, response) => {
+      if (err) assert.error(err);
+      assert.equal(response.text.includes('<title>Wallet || Plan</title>'), true, 'Should include title "Wallet || Plan"');
+      assert.end();
+    });
+});
+
+tape('testing "/my-wallet/plan/add-income" route; case4: cookie is modified', (assert) => {
+  supertest(app)
+    .get('/my-wallet/plan/add-income')
+    .set('Cookie', 'jwt=eyJhbGciOiJIUzI1NiIsInR5cCpXVCJ9.eyJ1c2VySWQiOjEsInBsYW5JZCI6MiwiaWF0IjoxNTUzMTA0NDU3fQ.y_qqXnk-64bgghpDSHaExVYmkuOoXOeON2XO4XRQPZ0')
     .expect(302)
-    .expect('content-type', /text\/plain/)
-    .expect('location', '/my-wallet')
+    .expect('location', '/')
     .end((err) => {
       if (err) assert.error(err);
       assert.end();
     });
 });
+
 tape.onFinish(() => {
   process.exit(0);
 });
