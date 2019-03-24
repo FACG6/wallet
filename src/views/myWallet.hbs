@@ -1,24 +1,48 @@
 <section class="profile">
-      <div class="profile__total">
-        <div class="profile__total-title">
-          <p>Total Expense</p>
-          <p>0.0$/0.0$</p>
-        </div>
-        <progress class="profile__total-progress progress" max="100" value=""></progress>
-        <a href="/plan">
-          <i class="fa fa-plus-circle profile__total-plan"></i>
-        </a>
-      </div>
-      <div class="profile__expenses">
-        <p class="profile__expenses-title">Your Expenses : </p>
-        <div class="profile__expenses-description">
-          <p>Category Expense</p>
-          <p>0.0$/0.0$</p>
-        </div>
-        <progress class="profile__expenses-progress progress" max="100" value=""></progress>
-        <a href="/plan">
-          <i class="fa fa-plus-circle profile__expenses-add"></i>
-        </a>
-        <a href="/profile/transactions"><i class="far fa-list-alt profile__expenses-display"></i></a>
-      </div>
-    </section>
+  <div class="profile__total">
+    {{#if preTour}}
+    <div class="profile__total-title">
+      <p>Total Expense</p>
+      <p>0.0$/0.0$</p>
+    </div>
+    <progress class="profile__total-progress progress" max="100" value=""></progress>
+    <a href="/plan">
+      <i class="fa fa-plus-circle profile__total-plan"></i>
+    </a>
+    <div class="profile__total-notify">
+      First Step, click this icon to
+      add income to your wallet
+    </div>
+  </div>
+  {{else}}
+  <div class="profile__total-title">
+    <p>Total Expense</p>
+    <p>{{totalExpenses}}$/{{income}}$</p>
+  </div>
+  <progress class="profile__total-progress progress {{colorIncome}}" max="100" value={{totalPercentage}}></progress>
+  {{#if disable}}
+  <a title="this button is disable">
+    <i class="fa fa-plus-circle profile__total-plan"></i>
+  </a>
+  {{else}}
+  <a href="/plan">
+    <i class="fa fa-plus-circle profile__total-plan"></i>
+  </a>
+  {{/if}}
+  </div>
+  <div class="profile__expenses">
+    <p class="profile__expenses-title">Your Expenses : </p>
+    {{#each categories}}
+    <div class="profile__expenses-description">
+      <p>{{name}}</p>
+      <p>{{totalexpcat}}$/{{amount}}$</p>
+    </div>
+    <progress class="profile__expenses-progress progress {{color}}" max="100" value={{percentage}}></progress>
+    <a href="" class="profile__expenses-add-ico">
+      <i class="fa fa-plus-circle profile__expenses-add"></i>
+    </a>
+    <a href="/profile/transactions/{{categoryid}}"><i class="far fa-list-alt profile__expenses-display"></i></a>
+    {{/each}}
+  </div>
+  {{/if}}
+</section>

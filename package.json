@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "NODE_ENV=test tape test/testQueries.js | tap-spec & tape test/testRoutes.js | tap-spec",
+    "test": "NODE_ENV=test tape test/testQueries.js | tap-spec && NODE_ENV=test tape test/testRoutes.js | tap-spec",
     "dev": "NODE_ENV=dev nodemon src/index.js",
     "start": "NODE_ENV=pro node src/index.js"
   },
