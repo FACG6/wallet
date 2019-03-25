@@ -3,6 +3,21 @@
   background: rgba(0, 0, 0, 0.75);
 }
 
+.user {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  color: #eee;
+  font-weight: bold;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+.user__period {
+  color: #ccc6c6;
+  font-weight: 100;
+}
+
 .profile {
   width: 80%;
   margin: 0 auto;
@@ -11,6 +26,7 @@
 
 .profile__expenses-add-ico {
   text-decoration: none;
+  cursor: pointer;
 }
 
 .profile__total-progress,
@@ -141,7 +157,6 @@
   color: red;
   text-shadow: 3px 3px 5px grey;
 }
-
 /* End of form add */
 
 /*End of main*/

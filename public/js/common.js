@@ -1,7 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-use-before-define */
-/* global Swal */
-
 const loginError = document.getElementById('login_error');
 
 // Popup to Login: Not finished Yet //
@@ -43,5 +39,34 @@ function request(endpoint, method, reqBody) {
     headers: {
       'content-type': 'application/json',
     },
+  });
+}
+
+function calculateExp(totalExp, price, progress, amount) {
+  totalExp.textContent = (Number(totalExp.textContent) + price).toFixed(2);
+  progress.value = ((totalExp.textContent * 100) / amount.textContent).toFixed(2);
+}
+function comapreColor(progress) {
+  console.log(progress);
+  if (progress.value > 70) {
+    progress.classList.remove(progress.classList[2]);
+    progress.classList.add('red');
+  } else if (progress.value > 50) {
+    progress.classList.remove(progress.classList[2]);
+    progress.classList.add('orange');
+  } else {
+    progress.classList.remove(progress.classList[2]);
+    progress.classList.add('green');
+  }
+}
+
+function fireToast(type, title) {
+  Swal.fire({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    type,
+    title,
   });
 }
