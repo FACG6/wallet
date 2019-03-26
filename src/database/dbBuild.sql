@@ -54,5 +54,5 @@ BEGIN;
     ('Gifts'),
     ('Health'),
     ('Drinks'),
-    ('transport');
+    ('Transport');
   COMMIT;

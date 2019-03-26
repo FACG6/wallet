@@ -1,3 +1,3 @@
 exports.get = (req, res) => {
-  res.render('home', { title: 'Wallet', stylesheet: '/css/home.css', layout: 'home' });
+  res.render('home', { title: 'Wallet', stylesheet: 'home.css', layout: 'home' });
 };

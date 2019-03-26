@@ -2,15 +2,16 @@
     <a href="/" class="header__home_link">
         <h1 class="header__logo"><span>Wa</span>llet</h1>
     </a>
-    {{#if preTour}}
-    <div class="header__links">
-        <a href="/login">Login</a>
-        <a href="/sign-up">Sign Up</a>
-    </div>
-    {{else}}
+    {{#if loggedIn}}
     <div class="header__links">
         <a href="/all-transaction">All Transaction</a>
         <a href="/logout">Log Out</a>
+    </div>
+    {{else}}
+    <div class="header__links">
+        <a href="/login">Login</a>
+        <a href="/sign-up">Sign Up</a>
+        <a href= "/my-wallet">Home</a>
     </div>
     {{/if}}
 </header>

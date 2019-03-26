@@ -1,14 +1,21 @@
 const loginError = document.getElementById('login_error');
 
 // Popup to Login: Not finished Yet //
-function renderLogin() {
+function renderLogin(location) {
   Swal.fire({
     title: 'LOGIN',
-    html: '<label>Email</lable><br><input id="email" name="email" type="email" value=""><br><label>Password</label><br><input type="password" type="text" value="" id="password"><br><div id="login_error"></div><br>Don\'t have an account? <a href="/signup">Sign up</a>',
+    text: 'Please login to your account to start adding your plan!',
+    html: '<div class="login--form"><div class="form--item"><label class="login--label" for="email">Email</label><input type="email" class="login--input" id="email" name="email" type="email" value=""></div><div class="form--item"><label for="password" class="login--label">Password</label><input type="password" class="login--input" type="password" type="text" value="" id="password"></div><div class="form--item"><p>Don\'t have an account? <a class="login--anchor" href="/signup">Sign up</a></p></div></div>',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
-    confirmButtonText: 'Login!',
+    confirmButtonText: 'Login',
+    customClass: {
+      popup: 'popup-custom',
+      actions: 'actions-class',
+      confirmButton: 'swal2--button confirm-button-custom',
+      cancelButton: 'swal2--button',
+    },
   }).then((confirm) => {
     if (confirm.value) {
       const email = document.getElementById('email').value;
@@ -21,7 +28,7 @@ function renderLogin() {
         // Will be edited after making login route. //
         .then(response => response.json())
         .then((result) => {
-          if (result.state === 'success') window.location.href = '/my-wallet/plan/add-income';
+          if (result.state === 'success' && location) window.location.href = location;
           if (result.state === 'ERR') loginError.textContent = result.errorMsg;
         })
         .catch(() => {
@@ -41,13 +48,26 @@ function request(endpoint, method, reqBody) {
     },
   });
 }
+// Generic Swal //
+function renderSwal(location, type, title, text, confirm) {
+  Swal.fire({
+    title,
+    type,
+    text,
+    confirmButtonText: confirm,
+  }).then((result) => {
+    if (result.value && location) {
+      window.location.href = location;
+    }
+  });
+}
 
 function calculateExp(totalExp, price, progress, amount) {
   totalExp.textContent = (Number(totalExp.textContent) + price).toFixed(2);
   progress.value = ((totalExp.textContent * 100) / amount.textContent).toFixed(2);
 }
+
 function comapreColor(progress) {
-  console.log(progress);
   if (progress.value > 70) {
     progress.classList.remove(progress.classList[2]);
     progress.classList.add('red');

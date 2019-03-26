@@ -1,23 +1,29 @@
 const express = require('express');
 
-const {
-  check,
-} = require('./middlewares/authentication');
+const { check } = require('./middlewares/authentication');
 const {
   checkUnProtected,
   checkProtected,
+  checkMyWallet,
 } = require('./middlewares/check');
 const home = require('../controllers/home');
 const MyWallet = require('./myWallet');
-const {
-  checkMyWallet,
-} = require('./middlewares/check');
 const postExpenses = require('./postExpenses');
-const { getPlan } = require('./plan');
-const checkPlan = require('./middlewares/checkPlan');
-const plan = require('./plan');
+const {
+  getPlan,
+  getBudget,
+  postPlan,
+  postIncome,
+} = require('./plan');
+const { validateBudget, validatePlan, checkAddExpenses } = require('./middlewares/validateIncomeData');
+const {
+  isLogged,
+  checkPlan,
+  createSession,
+  checkSession,
+} = require('./middlewares/checkPlan');
 const selectCategories = require('./middlewares/selectCategories');
-const { checkAddExpenses } = require('./middlewares/validateIncomeData');
+const { addPlan, addCategoryPlan } = require('./middlewares/addPlan');
 
 const router = express.Router();
 
@@ -29,9 +35,11 @@ router.route('/my-wallet')
   .post(checkProtected, checkAddExpenses, postExpenses.post);
 
 router.route('/my-wallet/plan/add-income')
-  .get(plan.getBudget);
+  .get(isLogged, getBudget)
+  .post(checkPlan, validateBudget, createSession, postIncome);
 
 router.route('/my-wallet/plan/add-plan')
-  .get(selectCategories, getPlan);
+  .get(isLogged, selectCategories, getPlan)
+  .post(checkPlan, checkSession, validatePlan, addPlan, addCategoryPlan, postPlan);
 
 module.exports = router;

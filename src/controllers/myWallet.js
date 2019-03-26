@@ -7,7 +7,7 @@ exports.get = (req, res, next) => {
       if (!result.rowCount) {
         res.render('myWallet', {
           title: 'My Wallet',
-          stylesheet: '/css/myWallet.css',
+          stylesheet: 'myWallet.css',
         });
         return '';
       }
@@ -30,6 +30,7 @@ exports.get = (req, res, next) => {
           httpOnly: true,
         });
         res.render('myWallet', {
+          loggedIn: true,
           disable: true,
           income: data.income,
           totalExpenses: data.totalexp,
@@ -37,16 +38,17 @@ exports.get = (req, res, next) => {
           colorIncome: data.incomecolor,
           categories: result.rows,
           title: 'My Wallet',
-          stylesheet: '/css/myWallet.css',
-          script: '/js/myWalletDom.js',
+          stylesheet: 'myWallet.css',
+          script: 'myWalletDom.js',
           username: req.token.username,
           start,
           end,
         });
       } else {
         res.render('myWallet', {
+          loggedIn: false,
           title: 'My Wallet',
-          stylesheet: '/css/myWallet.css',
+          stylesheet: 'myWallet.css',
         });
       }
     })

@@ -2,12 +2,8 @@
   <h2 class='heading2'>Start Managing Your Wallet</h2>
   <div class='form_container'>
     <div class='form'>
-      <div class='form--row form--row--bottom'>
-        <span class="dot--orange dot--left"></span>
-        <span class="dot"></span>
-      </div>
       <div class='form--row'>
-        <p>Add your income and select the period for managing your budget:</p>
+        <h3>Add your income and select the period for managing your budget:</h3>
       </div>
       <div class='form--row form--row--middle'>
         <div class='form--column form--column--left'>
@@ -16,7 +12,7 @@
           <label for='ending' class='form--label'>To</label>
         </div>
         <div class='form--column form--column--right'>
-          <input id='budget' value='' type='text' placeholder='Your Budget' class='form--input'>
+          <input autocomplete="off" id='budget' value='' type='number' step='0.01' placeholder='Your Budget' class='form--input'>
           <input id='starting' type='date' value='' min='20/03/2019' class='form--input'>
           <input id='ending' type='date' value='' min='20/03/2019' class='form--input'>
         </div>

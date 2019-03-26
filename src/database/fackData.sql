@@ -54,7 +54,7 @@ BEGIN;
     ('Gifts'),
     ('Health'),
     ('Drinks'),
-    ('transport');
+    ('Transport');
   INSERT INTO "user"
     (username, password, email)
   VALUES

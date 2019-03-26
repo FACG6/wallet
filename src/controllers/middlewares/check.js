@@ -18,6 +18,6 @@ exports.checkMyWallet = (req, res, next) => {
   if (req.token) {
     next();
   } else {
-    res.render('myWallet', { preTour: true, title: 'pre-tour', stylesheet: '/css/myWallet.css' });
+    res.render('myWallet', { preTour: true, title: 'Pre-tour', stylesheet: 'myWallet.css' });
   }
 };

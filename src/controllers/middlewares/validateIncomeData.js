@@ -1,4 +1,88 @@
 const validator = require('validator');
+const moment = require('moment');
+
+const regex = /^\d{4}[/-]\d{1,2}[/-]\d{1,2}$/;
+
+exports.validateBudget = (req, res, next) => {
+  const { income, starting, ending } = req.body;
+  if (!income || !starting || !ending) {
+    return res.send({ state: 'ERR', reason: 'Empty' });
+  }
+  if (!validator.isFloat(income)) {
+    return res.send({
+      state: 'ERR',
+      reason: 'Invalid',
+      errMsg: 'Income value is invalid',
+    });
+  }
+  /* Date can be in 'YYYY-MM-DD' Format or 'YYYY/MM/DD'. Other formats are not accepted! 
+     other written dates are not accepted */
+  if (!regex.test(starting || !regex.test(ending))) {
+    return res.send({
+      state: 'ERR',
+      reason: 'Invalid',
+      errMsg: 'Date is invalid',
+    });
+  }
+  // Date will be stored in Database in 'YYYY-MM-DD' format //
+  const startDate = moment(new Date(starting)).format('YYYY-MM-DD');
+  const endDate = moment(new Date(ending)).format('YYYY-MM-DD');
+  if (!moment(endDate).isAfter(moment(startDate))) {
+    return res.send({
+      state: 'ERR',
+      reason: 'Invalid',
+      errMsg: 'From date should be greater than To date',
+    });
+  }
+  if (!moment().isBetween(startDate, endDate)) {
+    return res.send({ state: 'ERR', reason: 'Invalid', errMsg: 'To date should be greater than today' });
+  }
+  req.planData = {
+    income,
+    startDate,
+    endDate,
+  };
+  next();
+};
+
+exports.validatePlan = (req, res, next) => {
+  const { categories, budgets } = req.body;
+  if (categories.length === 0 || budgets.length === 0) {
+    return res.send({
+      state: 'ERR',
+      reason: 'Empty',
+    });
+  }
+  if (categories.length !== budgets.length) {
+    return res.send({
+      state: 'ERR',
+      reason: 'Invalid',
+    });
+  }
+  const notValid = categories.some(category => !validator.isNumeric(category) || category <= 0);
+  if (notValid) {
+    return res.send({
+      state: 'ERR',
+      reason: 'Invalid',
+    });
+  }
+  const amountValidity = budgets.some(amt => !validator.isFloat(amt) || amt <= 0);
+  if (amountValidity) {
+    return res.send({
+      state: 'ERR',
+      reason: 'Invalid',
+    });
+  }
+  const total = budgets.reduce((accum, budget) => Number(accum) + Number(budget), 0);
+  const { income } = req.session;
+  if (total > income) {
+    return res.send({
+      state: 'ERR',
+      reason: 'Exceeds Income',
+    });
+  }
+  next();
+};
 
 exports.checkAddExpenses = (req, res, next) => {
   const {

@@ -67,9 +67,14 @@
 
 .row {
   margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
 }
 
 .hero__btn {
+  display:flex;
+  justify-content: center;
+  align-items: center;
   height: 50px;
   width: 110px;
   background: #D06507;
@@ -80,14 +85,14 @@
   font-size: 15px;
   color: #eeee;
   font-weight: bold;
-  letter-spacing: .1em;
+  letter-spacing: .05em;
   outline: none;
   cursor: pointer;
 }
 
-.hero__btn a{
+a{
   text-decoration: none;
-    color: #eee;
+  color: #eee;
 }
 
 .hero__btn a{

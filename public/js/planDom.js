@@ -15,6 +15,7 @@ function checkResponse(result) {
     else if (result.reason === 'Empty') renderError('Select a category or fill empty fields');
     else if (result.reason === 'Invalid') renderError('Invalid Values. Enter numbers only!');
     else if (result.reason === 'No Income') renderIncomeSwal();
+    else if (result.reason === 'Exceeds Income') renderBudgetError();
     else renderError("Oops! Something wen't wrong. Try another time!");
   } else renderSuccess();
 }
@@ -27,34 +28,26 @@ function renderError(message) {
 // Render Success Popup//
 function renderSuccess() {
   Swal.fire({
-    title: 'Success',
-    text: 'Your plan has been added successfully!',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Okay',
-  }).then((result) => {
-    if (result.value) {
-      window.location.href = '/my-wallet';
-    }
-  });
+    toast: true,
+    position: 'top-end',
+    type: 'Success',
+    showConfirmButton: false,
+    title: 'Done',
+    text: 'Added Successfully!',
+    timer: 4000,
+  }).then(
+    window.location.href = '/my-wallet',
+  );
 }
 
 // Render No Income Popup//
 function renderIncomeSwal() {
-  Swal.fire({
-    title: 'Warning',
-    type: 'Warning',
-    text: 'You haven\'t yet set your income. Add your income now!',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Add',
-  }).then((result) => {
-    if (result.value) {
-      window.location.href = '/my-wallet/plan/add-income';
-    }
-  });
+  renderSwal('/my-wallet/plan/add-income', 'error', 'Failed!', 'You haven\'t yet set your income. Add your income now!', 'Add');
+}
+
+// Render Exceeds Income Error //
+function renderBudgetError() {
+  renderSwal(null, 'error', 'Failed!', 'The total of budgets you set exceeds your income!', 'Okay');
 }
 
 // Event Listener to each checkbox to toggle disabled attribute from inputs //
@@ -65,6 +58,7 @@ for (let i = 0; i < checkbox.length; i++) {
     category.value = '';
     category.toggleAttribute('disabled');
     category.classList.toggle('active');
+    category.placeholder = 'budget';
   });
 }
 
@@ -91,6 +85,7 @@ addButton.addEventListener('click', (e) => {
       return;
     }
     // Push categories and budgets to the arrays //
+    error.textContent = '';
     checked.placeholder = '';
     categories.push(checked.getAttribute('catId'));
     budgets.push(checked.value);
@@ -102,5 +97,5 @@ addButton.addEventListener('click', (e) => {
       .then(response => response.json())
       .then(result => checkResponse(result))
       .catch(() => renderError('Internal Server Error!'));
-  } else renderError('Fill Empty Fields');
+  } else renderError('Fill empty fields or fix errors');
 });
