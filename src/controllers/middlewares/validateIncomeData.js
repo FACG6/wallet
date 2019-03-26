@@ -96,7 +96,7 @@ exports.checkAddExpenses = (req, res, next) => {
   const toDate = new Date(dateExp);
   if (validator.isEmpty(idCat) || validator.isEmpty(priceExp) || validator.isEmpty(dateExp)) {
     res.send({ error: 'Please fill all fields' });
-  } else if (!validator.isFloat(priceExp) || price < 0.00 || !validator.isNumeric(idCat) || !(/[0-9]{4}-[0-9]{2}-[0-9]{2}/.test(dateExp)) || description.search(/<[^>]*script/) !== -1) {
+  } else if (!validator.isFloat(priceExp) || priceExp < 0.00 || !validator.isNumeric(idCat) || !(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(dateExp)) || description.search(/<[^>]*script/) !== -1) {
     res.send({ error: 'Please enter valid value' });
   } else if (!(toDate >= new Date(req.token.start) && toDate <= new Date(req.token.end))) {
     res.send({ error: `Please enter date between ${req.token.start} and ${req.token.end}` });

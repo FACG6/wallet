@@ -103,8 +103,101 @@ tape('testing "/my-wallet/plan/add-income" route; case4: cookie is modified', (a
       assert.end();
     });
 });
-tape.onFinish(() => {
-  process.exit(0);
+
+tape('test add Expenses from /my-wallet route, case1 : there is no cookies', (test) => {
+  supertest(app)
+    .post('/my-wallet')
+    .send({
+      catId: '1',
+      price: '50',
+      date: '2019-03-01',
+      description: '',
+    })
+    .expect(302)
+    .expect('location', '/')
+    .end((error) => {
+      if (error) test.error(error);
+    });
+  test.end();
+});
+
+tape('test add Expenses from /my-wallet route, case2 : there is empty income data expect description is optional', (test) => {
+  supertest(app)
+    .post('/my-wallet')
+    .set('Cookie', 'jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJzaG9yb3VxIiwic3RhcnQiOiIyMDE5LTAzLTAxIiwiZW5kIjoiMjAxOS0wMy0zMCIsImNhdGVnb3J5SWQiOlsyLDMsMV0sImlhdCI6MTU1MzQ0Nzg4NX0.c6o_OsIkQwv0DbsNHiweW-v7VDvYEOH-3Grke-eiVrg')
+    .send({
+      catId: '1',
+      price: '',
+      date: '2019-03-01',
+      description: '',
+    })
+    .expect(200)
+    .end((error, response) => {
+      if (error) test.error(error);
+      test.equal(response.text, '{"error":"Please fill all fields"}', 'the response must be "Please fill all fields"');
+    });
+  test.end();
+});
+
+tape('test add Expenses from /my-wallet route, case3 : all fields is filled but the date not between the period of budget', (test) => {
+  supertest(app)
+    .post('/my-wallet')
+    .send({
+      catId: '1',
+      price: '50',
+      date: '2019-02-01',
+      description: '',
+    })
+    .set('Cookie', 'jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJzaG9yb3VxIiwic3RhcnQiOiIyMDE5LTAzLTAxIiwiZW5kIjoiMjAxOS0wMy0zMCIsImNhdGVnb3J5SWQiOlsyLDMsMV0sImlhdCI6MTU1MzQ0Nzg4NX0.c6o_OsIkQwv0DbsNHiweW-v7VDvYEOH-3Grke-eiVrg')
+    .expect(200)
+    .end((error, response) => {
+      if (error) test.error(error);
+      test.equal(response.text, '{"error":"Please enter date between 2019-03-01 and 2019-03-30"}', 'the response must be {"error":"Please enter date between 2019-03-01 and 2019-03-30"}');
+    });
+  test.end();
+});
+
+tape('test add Expenses from /my-wallet route, case4 : all fields is filled but the category not in the plan', (test) => {
+  supertest(app)
+    .post('/my-wallet')
+    .send({
+      catId: '6',
+      price: '50',
+      date: '2019-03-01',
+      description: '',
+    })
+    .set('Cookie', 'jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicGxhbklkIjoxLCJzdGFydCI6IjIwMTktMDMtMDEiLCJlbmQiOiIyMDE5LTAzLTMxIiwiY2F0ZWdvcmllc0lkIjpbMSwzLDJdLCJpYXQiOjE1NTM1NDIxNDJ9.67R2G5zPBlrHgPc9Or-w1D1QpNCya_2dbKDHzi0JC-o')
+    .expect(200)
+    .end((error, response) => {
+      if (error) test.error(error);
+      test.equal(response.text, '{"error":"Sorry this category not in your budget"}', 'the response must be {"error":"Sorry this category not in your budget"}');
+    });
+  test.end();
+});
+
+tape('test add Expenses from /my-wallet route, case5 : all fields is filled with correct data', (test) => {
+  runBuild()
+    .then(() => {
+      supertest(app)
+        .post('/my-wallet')
+        .send({
+          catId: '1',
+          price: '50',
+          date: '2019-03-02',
+          description: '',
+        })
+        .set('Cookie', 'jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicGxhbklkIjoxLCJzdGFydCI6IjIwMTktMDMtMDEiLCJlbmQiOiIyMDE5LTAzLTMxIiwiY2F0ZWdvcmllc0lkIjpbMSwzLDJdLCJpYXQiOjE1NTM1NDIxNDJ9.67R2G5zPBlrHgPc9Or-w1D1QpNCya_2dbKDHzi0JC-o')
+        .expect(200)
+        .end((error, response) => {
+          if (error) test.error(error);
+          test.equal(response.text, '{"price":50}', 'the response must be {"price":50}');
+        });
+      test.end();
+    })
+    .catch((error) => {
+      test.error(error);
+      test.end();
+    });
 });
 
 tape('testing "/my-wallet/plan/add-income": POST REQUEST; case1: No cookie', (assert) => {

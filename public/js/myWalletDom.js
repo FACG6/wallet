@@ -36,7 +36,7 @@ addBtn.forEach((add) => {
           error.textContent = 'Please fill the price and date';
           return false;
         }
-        if (!(/\d+/.test(price)) || price < 0.00 || !(/[0-9]{4}-[0-9]{2}-[0-9]{2}/.test(date)) || description.search(/<[^>]*script/) !== -1) {
+        if (!(/\d+/.test(price)) || price < 0.00 || !(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(date)) || description.search(/<[^>]*script/) !== -1) {
           error.textContent = 'ensure you put correct value please';
           return false;
         }
