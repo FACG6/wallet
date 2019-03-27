@@ -15,7 +15,7 @@ exports.validateBudget = (req, res, next) => {
       errMsg: 'Income value is invalid',
     });
   }
-  /* Date can be in 'YYYY-MM-DD' Format or 'YYYY/MM/DD'. Other formats are not accepted! 
+  /* Date can be in 'YYYY-MM-DD' Format or 'YYYY/MM/DD'. Other formats are not accepted!
      other written dates are not accepted */
   if (!regex.test(starting || !regex.test(ending))) {
     return res.send({
@@ -107,6 +107,20 @@ exports.checkAddExpenses = (req, res, next) => {
     req.body.price = priceExp;
     req.body.date = dateExp;
     req.body.description = descExp;
+    next();
+  }
+};
+
+exports.checkLogin = (req, res, next) => {
+  const {
+    email, password,
+  } = req.body;
+  const emailTrim = email.trim();
+  if (!password || !emailTrim) {
+    res.send({ error: 'Please Fill All Field' });
+  } else if (!(validator.isEmail(emailTrim))) {
+    res.send({ error: 'Please Enter Valid Email' });
+  } else {
     next();
   }
 };
