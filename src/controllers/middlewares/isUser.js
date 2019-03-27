@@ -1,15 +1,15 @@
-const checkUser = require('./../../database/queries/selectUser');
+const { checkEmail } = require('../../database/queries/checkEmail');
 
-exports.checkUser = (req, res, next) => {
-  checkUser.select(req.body.email.trim())
+exports.checkEmailExist = (req, res, next) => {
+  checkEmail(req.body.email)
     .then((result) => {
-      if (result.rows.rowCounts) {
-        res.send(JSON.stringify({ error: 'Email Already Exists' }));
-      } else {
+      if (!result.rowCount) {
         next();
+      } else {
+        res.send({ error: 'Email is already used !!' });
       }
     })
     .catch(() => {
-      res.send(JSON.stringify({ error: 'Internal Server Error play try agian later ' }));
+      res.status(500).send({ error: 'Internal Servar Error!!' });
     });
 };

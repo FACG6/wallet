@@ -1,6 +1,20 @@
 const tape = require('tape');
-const build = require('../src/database/dbBuild');
+const { checkEmail } = require('../src/database/queries/checkEmail');
+const { insert } = require('../src/database/queries/insertUser');
 const selectPlan = require('../src/database/queries/selectPlan');
+const build = require('../src/database/dbBuild');
+
+tape('test of check email query', (test) => {
+  build()
+    .then(() => checkEmail('khader@khader.com'))
+    .then((result) => {
+      test.deepEqual(result.rows, [], 'the result must empty');
+    })
+    .catch((err) => {
+      test.error(err);
+    });
+  test.end();
+});
 
 tape('test select plan', (test) => {
   build()
@@ -16,6 +30,14 @@ tape('test select plan', (test) => {
     });
 });
 
-tape.onFinish(() => {
-  process.exit(0);
+tape('test of insert user', (test) => {
+  build()
+    .then(() => insert('khader', 'khader@khader.com', 'khader'))
+    .then((result) => {
+      test.equal(result.rows[0].username, 'khader', 'the username must be khader');
+    })
+    .catch((err) => {
+      test.error(err);
+    });
+  test.end();
 });

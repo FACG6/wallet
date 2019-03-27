@@ -124,3 +124,24 @@ exports.checkLogin = (req, res, next) => {
     next();
   }
 };
+
+
+exports.checkEnterdData = (req, res, next) => {
+  const {
+    username, password, email,
+  } = req.body;
+  const userName = username.trim();
+  const pass = password;
+  const e = email.trim();
+  if (!userName && !pass && !e) {
+    res.send({ error: 'Plese fill all fields' });
+  } else if (!validator.isAlphanumeric(userName)) {
+    res.send({ error: 'invalid pattern of username' });
+  } else if (!validator.isEmail(e)) {
+    res.send({ error: 'invalid pattern of email' });
+  } else {
+    req.body.email = email.trim();
+    req.body.username = username.trim();
+    next();
+  }
+};

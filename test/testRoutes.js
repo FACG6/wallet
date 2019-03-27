@@ -1,5 +1,7 @@
 const tape = require('tape');
 const supertest = require('supertest');
+const build = require('../src/database/dbBuild');
+
 const app = require('../src/app');
 const runBuild = require('../src/database/dbBuild');
 
@@ -519,4 +521,27 @@ tape('testing "/my-wallet/plan/add-plan": POST REQUEST; case5: Validation 3', (a
       }, 'ERR: Invalid');
       assert.end();
     });
-});
+  });
+tape('testing of signup page', (test) => {
+  build()
+    .then(() => {
+      supertest(app)
+        .post('/sign-up')
+        .send({
+          username: 'khader',
+          password: 'khader',
+          email: 'khader@khader.com',
+        })
+        .expect(200)
+        .expect('content-type', 'application/json; charset=utf-8')
+        .end((err, response) => {
+          if (err) test.error(err);
+          test.equal(response.text.includes('{"state":true}'), true, 'the response must be {"state":true} ');
+          test.end();
+        });
+    })
+    .catch((err) => {
+      test.error(err);
+    });
+  });
+
