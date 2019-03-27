@@ -1,34 +1,78 @@
-# wallet
-## Problems
-    1- Lots of people in the UAE struggle to manage their finance easily.
-    2- 90% of family problems is related to budget mismanagement , according to study conducted in the UAE.
-    3- People, including families, businessmen and employees forget how and where they spent their money. They also struggle to track all their transactions in an easy way.
+# WALLET management money
 
-## Soluation
-    1- Our website provides a management system for our customers in easy way. Users are able to set a plan for the month and add each transaction he/she makes in their profile.
+WALLET website is an innovation to help people in UEA managing their money, andlet them know their financial and keep tracking money.
 
-## Big Picture Goal
-    1- As a user, I can sign up to have access to my account to start manage.
-    2- As a user, I  can login to my account.
-    3- As a user, I  can add my income.
-    4- As a user, I  can add my categories of expenses and define the badget for it.
-    5- As a user, I  can add my expenses in spesific category
-    6- As a user, I  can delete spesfic expenses.
-    7- As a user, I  can view the managment page befor signup but can not make any action.
-    8- As a user, I  can log out from my account.
-    9- As a user, I  can show all my transcation for all categories.
-    10- As a user, I  can show all transaction for spesific category.
+---------------------------
+
+### Problem Statement
+
+* Lots of people in the UAE struggle to manage their finance easily.
+* 90% of family problems is related to budget mismanagement , according to study conducted in the UAE.
+* People, including families, businessmen and employees forget how and where they spent their money. They also struggle to track all their transactions in an easy way.
+
+
+#### Our Solution 
+
+* providing a management system for our customers in easy way. Users are able to set a plan for the month and add each transaction he/she makes in their profile.
+
+---------------------------
+ 
+ ### user stories
+**AS A USER**
+
+    * I can sign up to have access to my account to start manage.
+    * I  can login to my account.
+    * I  can add my income.
+    * I  can add my categories of expenses and define the badget for it.
+    * I  can add my expenses in spesific category
+    * I  can delete spesfic expenses.
+    * I  can view the managment page befor signup but can not make any action.
+    * I  can log out from my account.
+    * I  can show all my transcation for all categories.
+    * I  can show all transaction for spesific category.
+
+---------------------------
+    
+ ### Database Schema
+ ![DB_SCHEMA](https://files.gitter.im/foundersandcoders/WalletProject/pawM/Untitled-Diagram.png)
+
+--------------------------
+ 
+### How to run website locally 
+- Clone this repository
+- Run ```npm i```
+- Create a ```.env``` file
+- Add ```DB_LOCAL_URL``` AND ```SECRET``` 
+- run ```npm run dev``` to run the project
+
+---------------------------
+
+ ### How to run tests
+- Add ```DB_TESTING_URL``` to ```.env``` 
+
+- run ```npm run test``` to run database tests and server routes.
+
+---------------------------
+#### Link Of Prototype [Here ](https://www.figma.com/proto/Lk39N0iRhV7ZBPBKxTSIKMGQ/Wallet?node-id=0%3A1&scaling=contain)
+
+#### Link Heroku [Here ](https://mywalletheroku.herokuapp.com/)
+
+---------------------------
 
 ## Technologies Stack
-    1- Html5
-    2- Css3
-    3- Javascript
-    4- nodejs
-    5- express
-    6- handelbars
-    7- postgres
+    * HTML5
+    * CSS3
+    * JavaScript
+    * Node.js
+    * Express.js
+    * Handlebars.js
+    * PostgreSQL
+    * Travis CI
 
-## Figma
- [Wallet](https://www.figma.com/proto/Lk39N0iRhV7ZBPBKxTSIKMGQ/Untitled?node-id=320%3A111&scaling=contain)
+### Team
+- [Shoroq Saad](https://github.com/engshorouq)
+- [Israa sulaiman](https://github.com/IsraaSulaiman)
+- [Khader Murtaja](https://github.com/KhaderMurtaja)
+- [Mohammed](https://github.com/mohammedmh)
 
     
