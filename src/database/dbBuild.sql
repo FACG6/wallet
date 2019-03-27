@@ -42,10 +42,8 @@ BEGIN;
     date TEXT NOT NULL,
     description TEXT
   );
-insert into "user" VALUES (1,'mohammed','mohammed','mohammed@mohammed');
-  INSERT INTO category
-    (name)
-  VALUES
+
+  INSERT INTO category (name) VALUES
     ('Clothes'),
     ('Food'),
     ('Fuel'),

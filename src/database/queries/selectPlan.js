@@ -30,7 +30,7 @@ exports.select = (userID) => {
         ON expense.cat_id = category.id 
         WHERE
          "plan".user_id = $1 and 
-         "plan".id = (SELECT id FROM "plan" ORDER BY id DESC LIMIT 1) 
+         "plan".id = (SELECT id FROM "plan" where user_id=$1 ORDER BY id DESC LIMIT 1) 
          GROUP BY
           "plan".id, "plan".income, category.name, category_plan.amount, category.id;`,
     values: [userID],

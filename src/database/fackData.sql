@@ -58,7 +58,8 @@ BEGIN;
   INSERT INTO "user"
     (username, password, email)
   VALUES
-    ('shorouq', 'shrooq', 'shrooq@hotmail.com');
+    ('shorouq', 'shrooq', 'shrooq@hotmail.com'),
+    ('israa', 'israa1234', 'israa@gmail.com');
   INSERT INTO "plan"
     (user_id, income, starting, ending)
   VALUES

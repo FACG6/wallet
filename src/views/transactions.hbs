@@ -1,1 +1,24 @@
-<h2>transaction.hbs</h2>
+<div class='trans-wrapper'>
+    <h2 class='trans-heading'>Your {{catName}} Transaction Status</h2>
+    <table class='trans-table'>
+        <tr class='trans-table--row trans--table--row--heading'>
+            <th class='trans-table--item trans-table--item--heading'>Date</th>
+            <th class='trans-table--item trans-table--item--heading'>Price</th>
+            <th class='trans-table--item trans-table--item--heading'>Description</th>
+            <th></th>
+        </tr>
+        {{#each transactions}}
+        <tr class='trans-table--row'>
+            <td class='trans-table--item'>{{date}}</td>
+            <td class='trans-table--item'>${{price}}</td>
+            {{#if description}}
+            <td class='trans-table--item'>{{description}}</td>
+            {{else}}
+            <td class='trans-table--item'>-</td>
+            {{/if}}
+            <td class='trans-table--item'><a href='#'><i id={{cat_id}} class="fas fa-trash-alt delete"></i></a></td>
+        </tr>
+        {{/each}}
+    </table>
+
+</div>

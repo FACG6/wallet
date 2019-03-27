@@ -15,7 +15,6 @@ signUp.addEventListener('click', (e) => {
   }
   const error = document.createElement('p');
   error.classList.add('error');
-  console.log(email, username, password, confirmPassword);
 
   // ------ Check All Fileds ------
   if (!email || !username || !password || !confirmPassword) {

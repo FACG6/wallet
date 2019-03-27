@@ -1,5 +1,8 @@
 const tape = require('tape');
 const supertest = require('supertest');
+const {
+  sign,
+} = require('jsonwebtoken');
 const build = require('../src/database/dbBuild');
 
 const app = require('../src/app');
@@ -521,7 +524,71 @@ tape('testing "/my-wallet/plan/add-plan": POST REQUEST; case5: Validation 3', (a
       }, 'ERR: Invalid');
       assert.end();
     });
-  });
+});
+
+tape('testing /my-wallet/transactions/1; case 1: user is not logged in', (assert) => {
+  supertest(app)
+    .get('/my-wallet/transactions/1')
+    .expect(302)
+    .expect('location', '/')
+    .end((err) => {
+      if (err) assert.error(err);
+      assert.end();
+    });
+});
+
+tape('testing /my-wallet/transactions/1; case 2: user is logged in but has no plan', (assert) => {
+  const cookie = sign({ id: 2, username: 'israa' }, process.env.SECRET);
+  supertest(app)
+    .get('/my-wallet/transactions/1')
+    .set('Cookie', `jwt=${cookie}`)
+    .expect(302)
+    .expect('location', '/my-wallet')
+    .end((err) => {
+      if (err) assert.error(err);
+      assert.end();
+    });
+});
+
+tape('testing /my-wallet/transactions/1; case 3: user is logged in but has not selected categories yet for the plan', (assert) => {
+  const cookie = sign({
+    id: 1,
+    username: 'israa',
+    planId: 1,
+  }, process.env.SECRET);
+  supertest(app)
+    .get('/my-wallet/transactions/1')
+    .set('Cookie', `jwt=${cookie}`)
+    .expect(302)
+    .expect('location', '/my-wallet')
+    .end((err) => {
+      if (err) assert.error(err);
+      assert.end();
+    });
+});
+
+tape('testing /my-wallet/transactions/1; case 1: user is logged in and has a plan', (assert) => {
+  const cookie = sign({
+    id: 1,
+    username: 'shrorouq',
+    planId: 1,
+    categoriesId: [1, 2, 3],
+    income: 5000,
+    starting: '2019-03-01',
+    ending: '2019-03-31',
+  }, process.env.SECRET);
+  supertest(app)
+    .get('/my-wallet/transactions/2')
+    .set('Cookie', `jwt=${cookie}`)
+    .expect(200)
+    .expect('content-type', /html/)
+    .end((err, response) => {
+      if (err) assert.error(err);
+      assert.equal(response.text.includes('<title>Your Transactions</title>'), true, 'title should be your transactions');
+      assert.end();
+    });
+});
+
 tape('testing of signup page', (test) => {
   build()
     .then(() => {
