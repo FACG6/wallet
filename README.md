@@ -1,6 +1,6 @@
 # WALLET management money
 
-WALLET website is an innovation to help people in UEA managing their money, andlet them know their financial and keep tracking money.
+WALLET website is an innovation to help people in UEA managing their money, and let them know their financial and keep tracking money.
 
 ---------------------------
 
