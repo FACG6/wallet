@@ -10,6 +10,7 @@ exports.get = (req, res, next) => {
           loggedIn: true,
           title: 'My Wallet',
           stylesheet: 'myWallet.css',
+          username: req.token.username,
         });
         return '';
       }

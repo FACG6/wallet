@@ -626,4 +626,5 @@ tape('testing of signup page', (test) => {
     .catch((err) => {
       test.error(err);
     });
-});
+  });
+

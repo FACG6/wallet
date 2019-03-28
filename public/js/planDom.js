@@ -26,18 +26,18 @@ function renderError(message) {
 }
 
 // Render Success Popup//
+
 function renderSuccess() {
   Swal.fire({
-    toast: true,
-    position: 'top-end',
-    type: 'Success',
-    showConfirmButton: false,
-    title: 'Done',
-    text: 'Added Successfully!',
-    timer: 4000,
-  }).then(
-    window.location.href = '/my-wallet',
-  );
+    type: 'success',
+    text: 'Your Plan was added successfully!',
+    confirmButtonColor: '#108A40',
+    confirmButtonText: 'Okay',
+  }).then((result) => {
+    if (result.value) {
+      window.location.href = '/my-wallet';
+    }
+  });
 }
 
 // Render No Income Popup//

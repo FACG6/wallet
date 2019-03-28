@@ -1,20 +1,6 @@
 <section class="profile">
   <div class="profile__total">
-    {{#if preTour}}
-    <div class="profile__total-title">
-      <p>Total Expense</p>
-      <p>0.0$/0.0$</p>
-    </div>
-    <progress class="profile__total-progress progress" max="100" value=""></progress>
-    <a href="/my-wallet/plan/add-income">
-      <i class="fa fa-plus-circle profile__total-plan"></i>
-    </a>
-    <div class="profile__total-notify">
-      First Step, click this icon to
-      add income to your wallet
-    </div>
-  </div>
-  {{else}}
+  {{#if loggedIn}}
   <div class="user">
     <p>Wellcome {{username}}</p>
     {{#if start}}
@@ -52,6 +38,20 @@
       <a href="/my-wallet/transactions/{{categoryid}}"><i class="far fa-list-alt profile__expenses-display"></i></a>
     </div>
     {{/each}}
+  </div>
+  {{else}}
+  <div class="profile__total-title">
+    <p>Total Expense</p>
+    <p>0.0$/0.0$</p>
+  </div>
+  <progress class="profile__total-progress progress" max="100" value=""></progress>
+  <a href="/my-wallet/plan/add-income">
+    <i class="fa fa-plus-circle profile__total-plan"></i>
+  </a>
+  <div class="profile__total-notify">
+    First Step, click this icon to
+    add income to your wallet
+  </div>
   </div>
   {{/if}}
 </section>

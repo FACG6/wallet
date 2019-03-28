@@ -1,5 +1,10 @@
 exports.getSignUp = (req, res) => {
-  res.render('signUp', { script: 'signUpDom.js', stylesheet: 'sign.css', layout: 'main' });
+  res.render('signUp', {
+    title: 'Wallet || Signup',
+    script: 'signUpDom.js',
+    stylesheet: 'signUp.css',
+  });
+
 };
 
 exports.postSignUp = (req, res) => {
