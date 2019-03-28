@@ -18,19 +18,27 @@ WALLET website is an innovation to help people in UEA managing their money, and 
 ---------------------------
  
  ### user stories
+ #### Sprint 1
 **AS A USER**
 
     * I can sign up to have access to my account to start manage.
-    * I  can login to my account.
-    * I  can add my income.
-    * I  can add my categories of expenses and define the badget for it.
-    * I  can add my expenses in spesific category
-    * I  can delete spesfic expenses.
-    * I  can view the managment page befor signup but can not make any action.
-    * I  can log out from my account.
-    * I  can show all my transcation for all categories.
-    * I  can show all transaction for spesific category.
+    * I can login to my account.
+    * I can add my income.
+    * I can add my categories of expenses and define the budget for it.
+    * I can add my expenses in spesific category
+    * I can delete spesfic expenses.
+    * I can pre-tour website before signup but can not make any action.
+    * I can log out from my account.
+    * I can view all my transcation for all categories.
+    * I can view all transaction for spesific category.
 
+ #### Sprint 2
+ 
+    * I can update my income.
+    * I can edit any transaction.
+    * I can add other categories.
+    * I receive an email for verification.
+    
 ---------------------------
     
  ### Database Schema
