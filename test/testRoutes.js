@@ -627,3 +627,52 @@ tape('testing of signup page', (test) => {
       test.error(err);
     });
 });
+
+tape('Testing route /my-wallet/alltransactions; case 1, user has no cookie', (assert) => {
+  supertest(app)
+    .get('/my-wallet/all-transactions')
+    .expect(302)
+    .expect('location', '/')
+    .end((err) => {
+      if (err) assert.error(err);
+      assert.end();
+    });
+});
+
+tape('Testing route /my-wallet/alltransactions; case 2, user has no plan', (assert) => {
+  const cookie = sign({
+    username: 'israa',
+    id: 2,
+  }, process.env.SECRET);
+  supertest(app)
+    .get('/my-wallet/all-transactions')
+    .set('Cookie', [`jwt=${cookie}`])
+    .expect(200)
+    .expect('content-type', /html/)
+    .end((err) => {
+      if (err) assert.error(err);
+      assert.end();
+    });
+});
+
+tape('Testing route /my-wallet/alltransactions; case 3, user has a plan, no expenses yet', (assert) => {
+  const cookie = sign({
+    username: 'shorouq',
+    id: 1,
+    planId: 1,
+    income: 5000,
+    starting: '2019-03-01',
+    ending: '2019-03-31',
+    categoriesId: [1, 2, 3],
+  }, process.env.SECRET);
+  supertest(app)
+    .get('/my-wallet/all-transactions')
+    .set('Cookie', [`jwt=${cookie}`])
+    .expect(200)
+    .expect('content-type', /html/)
+    .end((err, response) => {
+      if (err) assert.error(err);
+      assert.equal(response.text.includes('<title>All Your Transactios</title>'), true, 'pass: title should be all your transactions');
+      assert.end();
+    });
+});

@@ -100,7 +100,7 @@ router.route('/my-wallet/transactions/:id')
   .get(checkProtected, checkTransToken, getSpecificTransactions, getTransactionsPage)
   .delete(checkProtected, deleteTransaction);
 router.route('/my-wallet/all-transactions')
-  .get(checkProtected, checkTransToken, selectAllTrans, allTransactionsPage.get);
+  .get(checkProtected, selectAllTrans, allTransactionsPage.get);
 
 
 router.route('/logout')

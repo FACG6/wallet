@@ -7,5 +7,6 @@ exports.getTransactionsPage = (req, res) => {
     transactions: req.transactions,
     username: req.token.username,
     script: 'transactionsDom.js',
+    transaction: true,
   });
 };

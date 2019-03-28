@@ -1,7 +1,7 @@
 const { createCookie } = require('./middlewares/createCookie');
 
 exports.get = (req, res) => {
-  res.render('login', { title: 'Wallet || Login', stylesheet: 'sign.css', script: 'loginDom.js' });
+  res.render('login', { title: 'Wallet || Login', stylesheet: 'login.css', script: 'loginDom.js' });
 };
 exports.post = (req, res) => {
   const { id, username } = req.userInfo;

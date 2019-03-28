@@ -4,6 +4,9 @@
     </a>
     {{#if loggedIn}}
     <div class="header__links">
+        {{#if transaction}}
+        <a href="/my-wallet">My Wallet</a>
+        {{/if}}
         <a href="/my-wallet/all-transactions">All Transaction</a>
         <a href="/logout">Log Out</a>
     </div>

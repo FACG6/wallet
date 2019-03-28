@@ -1,5 +1,5 @@
-const send = document.getElementById('login');
-const form = document.getElementById('form');
+const send = document.getElementById('send');
+const error = document.getElementById('login_error');
 
 send.addEventListener('click', (e) => {
   e.preventDefault();
@@ -9,16 +9,10 @@ send.addEventListener('click', (e) => {
   }
   const email = document.getElementById('email').value.trim();
   const password = document.getElementById('password').value;
-  const error = document.createElement('p');
-  error.classList.add('error');
-  if (!password || !email) {
-    error.textContent = 'Please Fill All Fields';
-    form.insertBefore(error, send);
-    return '';
-  }
+  error.textContent = '';
+
   if (!validator.isEmail(email)) {
     error.textContent = 'Please Enter Valid Email';
-    form.insertBefore(error, send);
     return '';
   }
   const data = {
@@ -30,7 +24,6 @@ send.addEventListener('click', (e) => {
     .then((res) => {
       if (res.error) {
         error.textContent = res.error;
-        form.insertBefore(error, send);
       } else {
         window.location.href = '/my-wallet';
       }

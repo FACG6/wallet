@@ -157,12 +157,32 @@
   color: red;
   text-shadow: 3px 3px 5px grey;
 }
+
 /* End of form add */
 
-.popup-add{
+.popup-add {
   min-width: 250px !important;
   max-width: 450px !important;
   padding: 20px !important;
+}
+
+.username {
+  color: #d9681f;
+  padding-left: 5px;
+}
+
+@media (max-width:700px) {
+
+  .profile__total-progress{
+    width: 80%;
+  }
+  .profile__expenses-progress {
+    width : 50%;
+  }
+
+  .profile__total-notify {
+    width: 163px;
+  }
 }
 
 /*End of main*/

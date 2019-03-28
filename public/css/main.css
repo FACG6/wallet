@@ -1,139 +1,147 @@
 * {
-    padding: 0;
-    margin: 0px;
-    box-sizing: border-box;
-    font-family: 'Open Sans',
+  padding: 0;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: 'Open Sans',
     sans-serif;
-  }
-  
-  /* Start Of Header */
-  .header,
-  .footer {
-    background: #2a2a2a;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  
-  .header__home_link {
-    margin-left: 5%;
-    text-decoration: none;
-  }
-  
-  .header__logo {
-    color: #eeeeee;
-    letter-spacing: 0.1em;
-    font-size: 2.6rem;
-    padding: 5px;
-  }
-  
-  .header__logo span {
-    color: #d96704;
-  }
-  
-  .header__links,
-  .footer__links {
-    margin-right: 6%;
-    margin-bottom: 5px;
-    padding: 5px;
-    padding-top: 25px;
-  }
-  
-  .header__links a {
-    text-decoration: none;
-    color: #eee;
-    margin-left: 10px;
-    font-weight: bold;
-  }
-  /* End Of Header */
-  
-  /*Start of main*/
-  .main {
-    min-height: 80vh;
-  }
-  
-  /*End of main*/
-  
-  /*Start of footer*/
-  .footer {
-    background: #2a2a2a;
-    color: #eee;
-  }
-  
-  .footer__copyright {
-    padding-top: 7px;
-    margin-left: 5%;
-    letter-spacing: .05rem;
-    font-size: 15px;
-  }
-  
-  .footer__links {
-    padding-top: 7px;
-    margin-bottom: 0px;
-  }
-  
-  .footer__links a {
-    text-decoration: none;
-    color: #eee;
-    margin-left: 20px;
-    font-size: 18px;
-  }
-  
-  /*End of footer*/
+}
 
-  /* Login Swal */
-  .login--form{
-       margin: 0 auto;
-       padding: 1rem;
-       font-size: 15px;
-  }
-  .form--item{
-    width: 90%;
-    display: flex;
-    margin: 0 auto;
-    justify-content: space-between;
-  }
+/* Start Of Header */
+.header,
+.footer {
+  background: #2a2a2a;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 
-  .form--item p{
-    font-size: 12px;
-  }
+.header__home_link {
+  margin-left: 5%;
+  text-decoration: none;
+}
 
-  .login--input{
-    padding: .4rem .9rem;
-    border-radius: 3px;
-    box-shadow: 1px solid rgba(146, 141, 141, 0.5);
-    margin-bottom: 1rem;
-    outline: none;
-  }
+.header__logo {
+  color: #eeeeee;
+  letter-spacing: 0.1em;
+  font-size: 2.6rem;
+  padding: 5px;
+}
 
-  a{
-    text-decoration: none;
-  }
+.header__logo span {
+  color: #d96704;
+}
 
-  .actions-class {
-    margin: 3px !important;
+.header__links,
+.footer__links {
+  margin-right: 6%;
+  margin-bottom: 5px;
+  padding: 5px;
+  padding-top: 25px;
+}
 
-  }
-  .swal-button {
-    padding: 7px 19px !important;
-    border-radius: 2px;
-    background-color: #4962B3;
-    font-size: 12px;
-    border: 1px solid #3e549a;
-    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
-  }
+.header__links a {
+  text-decoration: none;
+  color: #eee;
+  margin-left: 10px;
+  font-weight: bold;
+}
 
-  .swal2--button{
-    padding: .6rem 1rem !important;
-    font-size: 15px !important;
-    font-weight: bold !important;
-  }
+.header__links a:hover{
+  color: #d96704;
+  text-decoration: underline;
+}
 
-  .confirm-button--custom{
-    background: green !important; 
-  }
+/* End Of Header */
 
-  .popup-custom{
-    max-width: 450px !important;
-  }
+/*Start of main*/
+.main {
+  min-height: 80vh;
+}
+
+/*End of main*/
+
+/*Start of footer*/
+.footer {
+  background: #2a2a2a;
+  color: #eee;
+}
+
+.footer__copyright {
+  padding-top: 7px;
+  margin-left: 5%;
+  letter-spacing: .05rem;
+  font-size: 15px;
+}
+
+.footer__links {
+  padding-top: 7px;
+  margin-bottom: 0px;
+}
+
+.footer__links a {
+  text-decoration: none;
+  color: #eee;
+  margin-left: 20px;
+  font-size: 18px;
+}
+
+/*End of footer*/
+
+/* Login Swal */
+.login--form {
+  margin: 0 auto;
+  padding: 1rem;
+  font-size: 15px;
+}
+
+.form--item {
+  width: 90%;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.form--item p {
+  font-size: 12px;
+}
+
+.login--input {
+  padding: .4rem .9rem;
+  border-radius: 3px;
+  box-shadow: 1px solid rgba(146, 141, 141, 0.5);
+  margin-bottom: 1rem;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.actions-class {
+  margin: 3px !important;
+
+}
+
+.swal-button {
+  padding: 7px 19px !important;
+  border-radius: 2px;
+  background-color: #4962B3;
+  font-size: 12px;
+  border: 1px solid #3e549a;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+}
+
+.swal2--button {
+  padding: .6rem 1rem !important;
+  font-size: 15px !important;
+  font-weight: bold !important;
+}
+
+.confirm-button--custom {
+  background: green !important;
+}
+
+.popup-custom {
+  max-width: 350px !important;
+}

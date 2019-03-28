@@ -2,7 +2,7 @@ exports.getSignUp = (req, res) => {
   res.render('signUp', {
     title: 'Wallet || Signup',
     script: 'signUpDom.js',
-    stylesheet: 'signUp.css',
+    stylesheet: 'sign.css',
   });
 };
 

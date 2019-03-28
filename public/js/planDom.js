@@ -58,7 +58,6 @@ for (let i = 0; i < checkbox.length; i++) {
     category.value = '';
     category.toggleAttribute('disabled');
     category.classList.toggle('active');
-    category.placeholder = 'budget';
   });
 }
 

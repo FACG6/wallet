@@ -1,9 +1,21 @@
-<form class="signup-container">
-  <h2>Create a new Account</h2>
-  <input type="email" class="email" id="email" placeholder="Email" required>
-  <input type="text" class="username" id="username" placeholder="Username" required>
-  <input type="password" class="password" id="password" placeholder="password" required>
-  <input type="password" class="confirm-password" id="confirmPassword" placeholder="confirm password" required>
-  <p class="signup-container-p">Have an account ? <a href="/login">login</a></p>
-  <button class="sign-up" id="sign-up">Sign Up</button>
-</form>
+<div class='wrapper'>
+  <form id='signup-container' class="signup-form">
+    <div class='signup_container'>
+      <h2>Create A new Account</h2>
+      <label class='signup--label' for='email'>Email<span class='required'> *</span></label>
+      <input autocomplete='off' class="signup--input" id='email' value='' type="email" class="email" id="email"
+        required>
+      <label class='signup--label' for='username'>Username<span class='required'> *</span></label>
+      <input autocomplete='off' class="signup--input" id='username' type="text" class="username" id="username" required>
+      <label class='signup--label' for='password'>Password<span class='required'> *</span></label>
+      <input autocomplete='off' class="signup--input" id='password' type="password" class="password" id="password"
+        required>
+      <label class='signup--label' for='confirmPassword'>Re-Enter Password<span class='required'> *</span></label>
+      <input autocomplete='off' id='confirmPassword' type="password" class="signup--input" id="confirmPassword"
+        required>
+      <p class='login_msg'>Have an account? <a href="/login">login</a></p>
+      <span id='signupError' class='signup_error'></span>
+      <button class='signup--btn' id="sign-up">Sign Up</button>
+    </div>
+  </form>
+</div>

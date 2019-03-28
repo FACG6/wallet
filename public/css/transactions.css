@@ -11,7 +11,7 @@
     text-align: center;
     font-size: 14px;
     border-collapse: collapse;
-    border: 1px solid #eeee;
+    margin: 0 auto;
 }
 
 .trans-heading {
@@ -48,7 +48,6 @@
 
 .trans--table--row--heading {
     background: #108A40 !important;
-    border: 1px solid white;
 }
 
 .delete {
@@ -57,16 +56,16 @@
 }
 
 .date {
-    width: 17%;
+    min-width: 17%;
 }
 
 .price {
-    width: 12%;
+    min-width: 12%;
 }
 
 .category {
-    width: 15%;
+    min-width: 15%;
 }
 .delete{
-    width: 20%;
+    min-width: 20%;
 }

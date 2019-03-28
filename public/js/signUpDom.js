@@ -1,5 +1,5 @@
 const signUp = document.getElementById('sign-up');
-const signupContainer = document.querySelector('.signup-container');
+const error = document.getElementById('signupError');
 
 signUp.addEventListener('click', (e) => {
   e.preventDefault();
@@ -8,32 +8,23 @@ signUp.addEventListener('click', (e) => {
   const username = document.getElementById('username').value.trim();
   const password = document.getElementById('password').value;
   const confirmPassword = document.getElementById('confirmPassword').value;
-
-  const errorMessage = document.querySelector('.error');
-  if (errorMessage) {
-    errorMessage.remove();
-  }
-  const error = document.createElement('p');
-  error.classList.add('error');
+  error.textContent = '';
 
   // ------ Check All Fileds ------
   if (!email || !username || !password || !confirmPassword) {
     error.textContent = 'Please Fill All Fileds';
-    signupContainer.insertBefore(error, signUp);
     return '';
   }
 
   // ------ Check Username ------
   if (!validator.isAlphanumeric(username)) {
     error.textContent = 'Invalid username pattern !';
-    signupContainer.insertBefore(error, signUp);
     return '';
   }
 
   // ------ Check password and confirm ------
   if (!(password === confirmPassword)) {
     error.textContent = 'Passwords are not match !';
-    signupContainer.insertBefore(error, signUp);
     return '';
   }
 
@@ -48,7 +39,6 @@ signUp.addEventListener('click', (e) => {
     .then((response) => {
       if (response.error) {
         error.textContent = response.error;
-        signupContainer.insertBefore(error, signUp);
       } else {
         window.location.href = '/my-wallet';
       }
