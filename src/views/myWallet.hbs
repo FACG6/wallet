@@ -17,13 +17,16 @@
   {{else}}
   <div class="user">
     <p>Wellcome {{username}}</p>
-    <p class="user__period">Wallet from <span class="start">{{start}}</span> to <span class="end">{{end}}</span></p>
+    {{#if start}}
+    <p class="user__period">Wallet from <span class="start">{{start}}</span> - <span class="end">{{end}}</span></p>
+    {{/if}}
   </div>
   <div class="profile__total-title">
     <p>Total Expense</p>
-    <p><span class="totalExp">{{totalExpenses}}</span>$/<span class="income">{{income}}</span>$</p>
+    <p><span class="totalExp">{{#if totalExpenses}}{{totalExpenses}}{{else}}0.0{{/if}}</span>$/<span class="income">{{#if income}}{{income}}{{else}}0.0{{/if}}</span>$</p>
   </div>
-  <progress id="mainProgress" class="profile__total-progress progress {{colorIncome}}" max="100" value={{totalPercentage}}></progress>
+  <progress id="mainProgress" class="profile__total-progress progress {{colorIncome}}" max="100"
+    value={{totalPercentage}}></progress>
   {{#if disable}}
   <a title="this button is disable">
     <i class="fa fa-plus-circle profile__total-plan"></i>
@@ -38,15 +41,15 @@
     <p class="profile__expenses-title">Your Expenses : </p>
     {{#each categories}}
     <div>
-    <div class="profile__expenses-description">
-      <p>{{name}}</p>
-      <p><span class="total">{{totalexpcat}}</span>$/<span class="amount">{{amount}}</span>$</p>
-    </div>
-    <progress class="profile__expenses-progress progress {{color}}" max="100" value={{percentage}}></progress>
-    <a class="profile__expenses-add-ico">
-      <i class="fa fa-plus-circle profile__expenses-add" id={{categoryid}}></i>
-    </a>
-    <a href="/my-wallet/transactions/{{categoryid}}"><i class="far fa-list-alt profile__expenses-display"></i></a>
+      <div class="profile__expenses-description">
+        <p>{{name}}</p>
+        <p><span class="total">{{totalexpcat}}</span>$/<span class="amount">{{amount}}</span>$</p>
+      </div>
+      <progress class="profile__expenses-progress progress {{color}}" max="100" value={{percentage}}></progress>
+      <a class="profile__expenses-add-ico">
+        <i class="fa fa-plus-circle profile__expenses-add" id={{categoryid}}></i>
+      </a>
+      <a href="/my-wallet/transactions/{{categoryid}}"><i class="far fa-list-alt profile__expenses-display"></i></a>
     </div>
     {{/each}}
   </div>

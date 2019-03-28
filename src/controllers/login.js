@@ -7,7 +7,7 @@ exports.post = (req, res) => {
   const { id, username } = req.userInfo;
   const jwt = createCookie({ id, username });
   res.cookie('jwt', jwt, {
-    maxAge: 9000,
+    maxAge: 1000 * 60 * 60 * 2,
     httpOnly: true,
   });
   res.send({ result: true });

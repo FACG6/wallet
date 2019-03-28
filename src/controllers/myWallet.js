@@ -6,6 +6,7 @@ exports.get = (req, res, next) => {
     .then((result) => {
       if (!result.rowCount) {
         res.render('myWallet', {
+          username: req.token.username,
           loggedIn: true,
           title: 'My Wallet',
           stylesheet: 'myWallet.css',

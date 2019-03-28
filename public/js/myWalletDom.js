@@ -23,6 +23,7 @@ addBtn.forEach((add) => {
       showCloseButton: true,
       showCancelButton: true,
       confirmButtonText: 'Add',
+      confirmButtonColor: '#108a40',
       allowOutsideClick: false,
       showLoaderOnConfirm: true,
       preConfirm: () => {
@@ -68,16 +69,16 @@ addBtn.forEach((add) => {
           comapreColor(mainProgress);
 
           if (Number(total.textContent) > Number(amount.textContent)) {
-            fireToast('warning', 'Add Successfully but the expenses exceed the plan of this category');
+            fireToast('Add Successfully but the expenses exceed the plan of this category');
           } else {
-            fireToast('success', 'Add Successfully');
+            fireToast('Add Successfully');
           }
         }
       })
       .catch((error) => {
         parent.classList.remove('selected');
         if (error.message !== 'cancel' && error.message !== 'close') {
-          fireToast('error', 'Some thing error try again');
+          fireToast('Some thing error try again');
         }
       });
   });

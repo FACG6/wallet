@@ -8,7 +8,7 @@ exports.checkEmail = (req, res, next) => {
       } else {
         req.userInfo = {
           id: result.rows[0].id,
-          username: result.rows[0].name,
+          username: result.rows[0].username,
           password: result.rows[0].password,
         };
         next();

@@ -2,15 +2,15 @@
     <h2 class='trans-heading'>Your {{catName}} Transaction Status</h2>
     <table class='trans-table'>
         <tr class='trans-table--row trans--table--row--heading'>
-            <th class='trans-table--item trans-table--item--heading'>Date</th>
-            <th class='trans-table--item trans-table--item--heading'>Price</th>
+            <th class='trans-table--item trans-table--item--heading date'>Date</th>
+            <th class='trans-table--item trans-table--item--heading price'>Price</th>
             <th class='trans-table--item trans-table--item--heading'>Description</th>
-            <th></th>
+            <th class='trans-table--item trans-table--item--heading delete'>Delete</th>
         </tr>
         {{#each transactions}}
         <tr class='trans-table--row'>
-            <td class='trans-table--item'>{{date}}</td>
-            <td class='trans-table--item'>${{price}}</td>
+            <td class='trans-table--item date'>{{date}}</td>
+            <td class='trans-table--item price'>${{price}}</td>
             {{#if description}}
             <td class='trans-table--item'>{{description}}</td>
             {{else}}

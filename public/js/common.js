@@ -80,13 +80,13 @@ function comapreColor(progress) {
   }
 }
 
-function fireToast(type, title) {
+function fireToast(text) {
   Swal.fire({
-    toast: true,
     position: 'top-end',
     showConfirmButton: false,
-    timer: 3000,
-    type,
-    title,
+    timer: 10000,
+    showCloseButton: true,
+    text,
+    customClass: { popup: 'popup-add' },
   });
 }

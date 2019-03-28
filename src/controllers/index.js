@@ -1,6 +1,8 @@
 const express = require('express');
 
-const { check } = require('./middlewares/authentication');
+const {
+  check,
+} = require('./middlewares/authentication');
 const {
   checkUnProtected,
   checkProtected,
@@ -11,15 +13,32 @@ const home = require('../controllers/home');
 const MyWallet = require('./myWallet');
 const postExpenses = require('./postExpenses');
 const login = require('./login');
-const { checkEmail } = require('./middlewares/checkEmail');
-const { getSignUp, postSignUp } = require('./signUp');
-const { checkEmailExist } = require('./middlewares/isUser');
-const { hashPassword } = require('./middlewares/hashPassword');
-const { addUser } = require('./middlewares/addUser');
-const { compare } = require('./middlewares/comparePassword');
+const {
+  checkEmail,
+} = require('./middlewares/checkEmail');
+const {
+  getSignUp,
+  postSignUp,
+} = require('./signUp');
+const {
+  checkEmailExist,
+} = require('./middlewares/isUser');
+const {
+  hashPassword,
+} = require('./middlewares/hashPassword');
+const {
+  addUser,
+} = require('./middlewares/addUser');
+const {
+  compare,
+} = require('./middlewares/comparePassword');
 const selectCategories = require('./middlewares/selectCategories');
 const {
-  checkAddExpenses, checkLogin, validateBudget, validatePlan, checkEnterdData,
+  checkAddExpenses,
+  checkLogin,
+  validateBudget,
+  validatePlan,
+  checkEnterdData,
 } = require('./middlewares/validateIncomeData');
 const {
   getPlan,
@@ -33,15 +52,22 @@ const {
   createSession,
   checkSession,
 } = require('./middlewares/checkPlan');
-const { addPlan, addCategoryPlan } = require('./middlewares/addPlan');
+const {
+  addPlan,
+  addCategoryPlan,
+} = require('./middlewares/addPlan');
 const {
   getSpecificTransactions,
 } = require('./middlewares/selectTransactions');
 const {
   getTransactionsPage,
 } = require('./transactions');
+const selectAllTrans = require('./middlewares/selectAllTransactions');
+const allTransactionsPage = require('./allTransactions');
 const error = require('./error');
-const { getLogout } = require('./logout');
+const {
+  getLogout,
+} = require('./logout');
 
 const router = express.Router();
 
@@ -71,6 +97,9 @@ router.route('/my-wallet/plan/add-plan')
 
 router.route('/my-wallet/transactions/:id')
   .get(checkProtected, checkTransToken, getSpecificTransactions, getTransactionsPage);
+router.route('/my-wallet/all-transactions')
+  .get(checkProtected, checkTransToken, selectAllTrans, allTransactionsPage.get);
+
 
 router.route('/logout')
   .get(checkProtected, getLogout);

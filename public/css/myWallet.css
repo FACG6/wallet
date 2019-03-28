@@ -159,4 +159,10 @@
 }
 /* End of form add */
 
+.popup-add{
+  min-width: 250px !important;
+  max-width: 450px !important;
+  padding: 20px !important;
+}
+
 /*End of main*/

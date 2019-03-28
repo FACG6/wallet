@@ -1,0 +1,24 @@
+<div class='trans-wrapper'>
+    <h2 class='trans-heading'>All of Your Transactions</h2>
+    <table class='trans-table'>
+        <tr class='trans-table--row trans--table--row--heading'>
+            <th class='trans-table--item date'>Date</th>
+            <th class='trans-table--item price'>Price</th>
+            <th class='trans-table--item category'>Category</th>
+            <th class='trans-table--item desc'>Description</th>
+            <th class='trans-table--item'></th>
+        </tr>
+        {{#each transactions}}
+        <tr class='trans-table--row'>
+            <td class='trans-table--item date'>{{date}}</td>
+            <td class='trans-table--item price'>{{price}}</td>
+            <td class='trans-table--item category '>{{name}}</td>
+            {{#if description}}
+            <td class='trans-table--item desc'>{{description}}</td>
+            {{else}}
+            <td class='trans-table--item desc'>-<td>
+            {{/if}}
+        </tr>
+        {{/each}}
+    </table>
+</div>
