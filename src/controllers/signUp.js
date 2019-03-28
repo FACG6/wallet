@@ -4,7 +4,6 @@ exports.getSignUp = (req, res) => {
     script: 'signUpDom.js',
     stylesheet: 'signUp.css',
   });
-
 };
 
 exports.postSignUp = (req, res) => {

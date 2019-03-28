@@ -6,5 +6,6 @@ exports.getTransactionsPage = (req, res) => {
     catName: req.catName,
     transactions: req.transactions,
     username: req.token.username,
+    script: 'transactionsDom.js',
   });
 };

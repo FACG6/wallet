@@ -5,5 +5,6 @@ exports.get = (req, res) => {
     loggedIn: true,
     transactions: req.transactions,
     username: req.token.username,
+    script: 'transactionsDom.js',
   });
 };

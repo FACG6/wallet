@@ -65,6 +65,7 @@ const {
 const selectAllTrans = require('./middlewares/selectAllTransactions');
 const allTransactionsPage = require('./allTransactions');
 const error = require('./error');
+const deleteTransaction = require('./deleteTransaction');
 const {
   getLogout,
 } = require('./logout');
@@ -96,7 +97,8 @@ router.route('/my-wallet/plan/add-plan')
   .post(checkPlan, checkSession, validatePlan, addPlan, addCategoryPlan, postPlan);
 
 router.route('/my-wallet/transactions/:id')
-  .get(checkProtected, checkTransToken, getSpecificTransactions, getTransactionsPage);
+  .get(checkProtected, checkTransToken, getSpecificTransactions, getTransactionsPage)
+  .delete(checkProtected, deleteTransaction);
 router.route('/my-wallet/all-transactions')
   .get(checkProtected, checkTransToken, selectAllTrans, allTransactionsPage.get);
 

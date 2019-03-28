@@ -34,6 +34,9 @@
     height: 50px;
     text-align: center;
 }
+.trans-table--item a{
+ cursor: pointer;
+}
 
 .trans-table--row:nth-child(even) {
     background: #eee;
